@@ -6,7 +6,7 @@ The token is automatically fetched every 5 minutes and stored in a redis server 
 
 # Reverse Proxy
 
-There's an example NGINX `default.conf` in [nginx/default.conf](nginx/default.conf). This uses the (openresty nginx release)[https://github.com/openresty/openresty] that has a Redis LUA module built in.
+There's an example NGINX `default.conf` in [nginx/default.conf](nginx/default.conf). This uses the [openresty nginx release](https://github.com/openresty/openresty) that has a Redis LUA module built in.
 
 ## Setup
 
