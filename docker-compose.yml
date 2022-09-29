@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.proxy
+    ports:
+      - 127.0.0.1:80:80
+    depends_on:
+      - redis
+    networks:
+      main:
+        aliases:
+          - proxy
+  redis:
+    image: redis:latest
+    command: redis-server --requirepass tLnepVNpNdXk4o9NoEzd4cogN3LoLu4U
+    ports:
+      - 6379:6379
+    networks:
+      main:
+        aliases:
+          - redis
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.server
+    depends_on:
+      - redis
+    command: node --trace-warnings dist/index.js
+    networks:
+      main:
+        aliases:
+          - server
+    restart: always
+networks:
+  main:
