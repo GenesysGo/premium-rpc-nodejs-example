@@ -10,7 +10,7 @@ There's an example NGINX `default.conf` in [nginx/default.conf](nginx/default.co
 
 ## Setup
 
-You will want to update the line `set $endpoint "https://da2dev.genesysgo.net/abc-123-def";` to be your premium RPC's url.
+You will want to update the line `set $endpoint "https://us-west-1.genesysgo.net/abc-123-def";` to be your premium RPC's url.
 
 # Cron Server
 
