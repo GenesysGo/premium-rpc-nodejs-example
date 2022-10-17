@@ -2,6 +2,9 @@
 
 This is an example setup that puts your authenticated Premium GenesysGo RPC endpoint behind a reverse proxy. This allows you to control where requests to your RPC come from without exposing your RPC's authentication tokens to your frontend users, thus protecting your premium resources.
 
+> **Warning**
+> This is not set up for production use. It's specifically configured to work on a local network. This Docker setup will also not deploy to a container engine like DigitalOcean's App Platform. You will need to modify this configuration to work for your desired production usage.
+
 The token is automatically fetched every 5 minutes and stored in a redis server that the NGINX proxy has access to read from.
 
 # Reverse Proxy
