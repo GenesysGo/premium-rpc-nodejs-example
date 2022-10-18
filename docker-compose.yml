@@ -1,7 +1,9 @@
 version: "3"
 services:
   proxy:
-    image: openresty/openresty:alpine
+    build:
+      context: .
+      dockerfile: ./Dockerfile.proxy
     ports:
       - 80:80
       - 443:443
@@ -9,7 +11,6 @@ services:
       - redis
     restart: always
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
     networks:
