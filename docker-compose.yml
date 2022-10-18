@@ -1,22 +1,26 @@
-version: "3.8"
+ersion: "3"
 services:
   proxy:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.proxy
-    volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    image: openresty/openresty:alpine
     ports:
       - 80:80
       - 443:443
     depends_on:
       - redis
+    restart: always
+    volumes:
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
     networks:
       main:
         aliases:
           - proxy
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
   redis:
     image: redis:latest
     command: redis-server --requirepass tLnepVNpNdXk4o9NoEzd4cogN3LoLu4U
@@ -38,14 +42,5 @@ services:
         aliases:
           - server
     restart: always
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/cerbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-    networks:
-      main:
-        aliases:
-          - certbot
 networks:
   main:
