@@ -1,0 +1,10 @@
+# Stage 0
+FROM node:18.10.0-alpine
+WORKDIR /usr
+COPY ./server/package.json ./
+COPY ./server/tsconfig.json ./
+COPY ./server/src/index.ts ./src/
+COPY ./server/.env ./.env
+RUN ls -a
+RUN npm install
+RUN npm run build
