@@ -5,7 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile.proxy
     ports:
-      - 127.0.0.1:80:80
+      - 80:80
+      - 443:443
     depends_on:
       - redis
     networks:
@@ -33,5 +34,10 @@ services:
         aliases:
           - server
     restart: always
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
 networks:
   main:
