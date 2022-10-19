@@ -34,7 +34,7 @@ Now the real work begins
 5. Edit `./nginx/default.conf` to have the correct hostnames that you would like to secure wherever you see "knoxyproxy.juicystake.io"
 6. Run `docker-compose build`
 7. Run `docker-compose up -d`
-8. Run `docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d knoxyproxy.juicystake.io` and complete the dialog to receive certificates
+8. Run `docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d knoxyproxy.juicystake.io` and complete the dialog to receive certificates (but of course make sure you change the url after the -d flag)
 9. Once that succeeds, run `docker-compose down`
 10. Delete `./nginx/default.conf`
 11. Run `sudo cp ./nginx/default-2.conf default.conf`
