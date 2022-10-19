@@ -18,14 +18,15 @@ The proxy & redis logic is located within the `/rpc` location block.
 Note that in production, you should only need to update this token once every 24 hours unless you're exposing this token to the public and need to rotate it faster than that.
 
 ## Setup
--Deploy a virtual machine that has a public IP (or destination NAT) and confirm that ports 80 and 443 are open and reachable.
--Make sure that you have created a DNS A record that will resolve to the public IP address of your node.
--Then make sure you have Docker and docker-compose installed.
--Clone the repository `git clone repo_url`
--change into ssl directory `cd premium-rpc-nodejs-example/ssl`
-
-Now the real work begins
-
+### Env setup
+1. Deploy a virtual machine that has a public IP (or destination NAT) and confirm that ports 80 and 443 are open and reachable.  
+2. Make sure that you have created a DNS A record that will resolve to the public IP address of your node.  
+3. Then make sure you have Docker and docker-compose installed.  
+4. Clone the repository `git clone repo_url`  
+5. Change into ssl directory `cd premium-rpc-nodejs-example/ssl`  
+  
+Now the real work begins  
+  
 1. Copy `server/.env.example` to `server/.env`
 2. Edit the new .env file. Update `WALLET_KEY` to the keypair file's value of the wallet that has access to generate authentication tokens for your Premium RPC. If you don't have this keypair file, you can convert your wallet's private key (exported from your wallet UI) into this format by following what's done in this script: [https://gist.github.com/tracy-codes/f17e7ed8acfdd1be442f632f5b80763c](https://gist.github.com/tracy-codes/f17e7ed8acfdd1be442f632f5b80763c)
 3. Update `RPC_ID` to be the uuid at the end of your RPC's URL. For example, if your RPC's url ends in `/abc-123-456` then you'd set the value to `RPC_ID=abc-123-456`. Save and close the file.
