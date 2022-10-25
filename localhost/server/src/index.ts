@@ -60,6 +60,7 @@ async function main() {
       method: "POST",
       headers: {
         Authorization: `Bearer ${authResponse.token}`,
+        "Content-Type": "application/json",
       },
     }
   );
